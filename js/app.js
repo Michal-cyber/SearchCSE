@@ -7,6 +7,7 @@ const searchInput = document.getElementById('search');
 const resultsDiv = document.getElementById('results');
 const CSVButton = document.getElementById('downloadCSV');
 const JSONButton = document.getElementById('downloadJSON');
+const Cookies = document.getElementById('cookieConsent');
 let searchData;
 
 // schovame buttony na zaciatku stranky
@@ -16,12 +17,12 @@ JSONButton.style.display = 'none';
  // Kontrola súhlasu s cookies
  const checkCookieConsent = () => {
     const consentGiven = localStorage.getItem('cookieConsent');
-    consentGiven? document.getElementById('cookieConsent').style.display = 'none' : document.getElementById('cookieConsent').style.display = 'block';
+    consentGiven? Cookies.style.display = 'none' : Cookies.style.display = 'block';
 };
 
 const setCookieConsent = () => {
     localStorage.setItem('cookieConsent', 'true');
-    document.getElementById('cookieConsent').style.display = 'none';
+    Cookies.style.display = 'none';
 };
 
 document.getElementById('acceptCookies').addEventListener('click', setCookieConsent);
