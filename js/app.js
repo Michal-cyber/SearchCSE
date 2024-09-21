@@ -111,7 +111,7 @@ const downloadCSV = () => {
  * alebo stlacim enter
  */
     document.getElementById('searchbtn').addEventListener('click', async () => {
-        const query = document.getElementById('search').value;
+        const query = searchInput.value;
         const data = await searchGoogle(query);
         if (data) {
             displayResults(data);
