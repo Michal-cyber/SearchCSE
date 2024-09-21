@@ -69,7 +69,7 @@ const displayResults = (data) => {
  * Stahujem vyhladavanie do JSON file
  */
 const downloadJSON = () => {
-    if (!searchData) return;
+    if (!searchData || !searchData.items) return;
 
     const jsonString = JSON.stringify(searchData, null, 2);
     const blob = new Blob([jsonString], { type: 'application/json' });
@@ -123,7 +123,9 @@ const downloadCSV = () => {
             event.preventDefault(); // Zabraňuje predvolenému správaniu formulára
             const query = searchInput.value;
             const data = await searchGoogle(query);
+                   if (data) {
             displayResults(data);
+        }
         }
     });
     
