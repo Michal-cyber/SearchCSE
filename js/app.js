@@ -71,7 +71,16 @@ const displayResults = (data) => {
 const downloadJSON = () => {
     if (!searchData || !searchData.items) return;
 
-    const jsonString = JSON.stringify(searchData, null, 2);
+    const filteredData = {
+            items: searchData.items.map(item => ({
+                title: item.title,
+                link: item.link,
+                snippet: item.snippet
+            }))
+        };
+
+
+    const jsonString = JSON.stringify(filteredData, null, 2);
     const blob = new Blob([jsonString], { type: 'application/json' });
     const link = document.createElement('a');
     link.href = URL.createObjectURL(blob);
